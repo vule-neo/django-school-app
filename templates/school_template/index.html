@@ -1,0 +1,259 @@
+{% extends 'school_template/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--::header part start::-->
+    <header class="main_menu home_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="{% url 'school:home' %}"> <img src="{% static 'img/logo.png' %}" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                            id="navbarSupportedContent">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'school:home' %}">Početna</a>
+                                </li>
+                                <li class="nav-item">
+                                    {% if not user.is_authenticated %}
+                                    <a class="nav-link" href="{% url 'school:login_page' %}">Login</a>
+                                    {% else %}
+                                    <a class="nav-link" href="{% url 'school:logout_user' %}">Logout</a>
+                                    {% endif %}
+                                </li>
+                                {% if not user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'school:registration_page' %}">Napravi nalog</a>
+                                </li>
+                                {% endif %}
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'school:subjects' %}">Predmeti</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Pages
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
+                                        <a class="dropdown-item" href="elements.html">Elements</a>
+                                    </div>
+                                </li>
+                                {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Hello, {{user.username}}</a>
+                                </li>
+                                {% endif %}
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_1" href="#">Get a Quote</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header part end-->
+
+    <!-- banner part start-->
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-xl-6">
+                    <div class="banner_text">
+                        <div class="banner_text_iner">
+                            <h5>Zvanična stranica</h5>
+                            <h1>JU Gimnazija 'Vaso Pelagić' Brčko</h1>
+                            <a href="{% url 'school:subjects' %}" class="btn_1">Pogledaj Predmete</a>
+                            <a href="#" class="btn_2">Get Started </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part start-->
+
+
+    <!-- learning part start-->
+    <section class="learning_part">
+        <div class="container">
+            <div class="row align-items-sm-center align-items-lg-stretch">
+                <div class="col-md-7 col-lg-7">
+                    <div class="learning_img">
+                        <img src="{% static 'img/learning_img.png'%}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-5">
+                    <div class="learning_member_text">
+                        <h5>O školi</h5>
+                        <h2>Učite bez brige</h2>
+                        <p>Fifth saying upon divide divide rule for deep their female all hath brind Days and beast
+                            greater grass signs abundantly have greater also
+                            days years under brought moveth.</p>
+                        <ul>
+                            <li><span class="ti-pencil-alt"></span>Him lights given i heaven second yielding seas
+                                gathered wear</li>
+                            <li><span class="ti-ruler-pencil"></span>Fly female them whales fly them day deep given
+                                night.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- learning part end-->
+
+    <!-- member_counter counter start -->
+    <section class="member_counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_member_counter">
+                        <span class="counter">{{all_teachers}}</span>
+                        <h4>Svi Učitelji</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_member_counter">
+                        <span class="counter">{{all_students}}</span>
+                        <h4>Svi učenici</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_member_counter">
+                        <span class="counter">{{number_of_active_users}}</span>
+                        <h4>Aktivni Učenici</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_member_counter">
+                        <span class="counter">{{ofline_students}}</span>
+                        <h4>Ofline Učenici</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- member_counter counter end -->
+
+
+    <!-- learning part start-->
+    <section class="advance_feature learning_part">
+        <div class="container">
+            <div class="row align-items-sm-center align-items-xl-stretch">
+                <div class="col-md-6 col-lg-6">
+                    <div class="learning_member_text">
+                        <h5>Advance feature</h5>
+                        <h2>Our Advance Educator
+                            Learning System</h2>
+                        <p>Fifth saying upon divide divide rule for deep their female all hath brind mid Days
+                            and beast greater grass signs abundantly have greater also use over face earth
+                            days years under brought moveth she star</p>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                <div class="learning_member_text_iner">
+                                    <span class="ti-pencil-alt"></span>
+                                    <h4>Learn Anywhere</h4>
+                                    <p>There earth face earth behold she star so made void two given and also our</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                <div class="learning_member_text_iner">
+                                    <span class="ti-stamp"></span>
+                                    <h4>Expert Teacher</h4>
+                                    <p>There earth face earth behold she star so made void two given and also our</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="learning_img">
+                        <img src="{% static 'img/advance_feature_img.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- learning part end-->
+
+    <!--::blog_part start::-->
+    <section class="blog_part section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+                    <div class="section_tittle text-center">
+                        <p>Our Blog</p>
+                        <h2>Students Blog</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                    <div class="single-home-blog">
+                        <div class="card">
+                            <img src="{% static 'img/blog/blog_1.png' %}" class="card-img-top" alt="blog">
+                            <div class="card-body">
+                                <a href="#" class="btn_4">Design</a>
+                                <a href="blog.html">
+                                    <h5 class="card-title">Dry beginning sea over tree</h5>
+                                </a>
+                                <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
+                                <ul>
+                                    <li> <span class="ti-comments"></span>2 Comments</li>
+                                    <li> <span class="ti-heart"></span>2k Like</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                    <div class="single-home-blog">
+                        <div class="card">
+                            <img src="{% static 'img/blog/blog_2.png' %}" class="card-img-top" alt="blog">
+                            <div class="card-body">
+                                <a href="#" class="btn_4">Developing</a>
+                                <a href="blog.html">
+                                    <h5 class="card-title">All beginning air two likeness</h5>
+                                </a>
+                                <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
+                                <ul>
+                                    <li> <span class="ti-comments"></span>2 Comments</li>
+                                    <li> <span class="ti-heart"></span>2k Like</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                    <div class="single-home-blog">
+                        <div class="card">
+                            <img src="{% static 'img/blog/blog_3.png' %}" class="card-img-top" alt="blog">
+                            <div class="card-body">
+                                <a href="#" class="btn_4">Design</a>
+                                <a href="blog.html">
+                                    <h5 class="card-title">Form day seasons sea hand</h5>
+                                </a>
+                                <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
+                                <ul>
+                                    <li> <span class="ti-comments"></span>2 Comments</li>
+                                    <li> <span class="ti-heart"></span>2k Like</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::blog_part end::-->
+
+{% endblock %}

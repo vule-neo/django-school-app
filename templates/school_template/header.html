@@ -1,0 +1,57 @@
+{% load static %}
+    <header class="main_menu single_page_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand logo_1" href="{% url 'school:home' %}"> <img src="{% static 'img/single_page_logo.png'%}" alt="logo"> </a>
+                        <a class="navbar-brand logo_2" href="{% url 'school:home' %}"> <img src="{% static 'img/logo.png'%}" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                            id="navbarSupportedContent">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'school:home' %}">Početna</a>
+                                </li>
+                                <li class="nav-item">
+                                    {% if not user.is_authenticated %}
+                                    <a class="nav-link" href="{% url 'school:login_page' %}">Login</a>
+                                    {% else %}
+                                    <a class="nav-link" href="{% url 'school:logout_user' %}">Logout</a>
+                                    {% endif %}
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'school:subjects' %}">Predmeti</a>
+                                </li>
+                                {% if not user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'school:registration_page' %}">Napravi nalog</a>
+                                </li>
+                                {% endif %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Pages
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
+                                        <a class="dropdown-item" href="elements.html">Elements</a>
+                                    </div>
+                                </li>
+                                {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Hello, {{user.username}}</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header part end-->

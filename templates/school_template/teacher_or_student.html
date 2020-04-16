@@ -1,0 +1,23 @@
+{% extends 'school_template/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+	<center>
+		<div class="limiter">
+				<div class="wrap-login100">
+				<center>
+					<h1>Kakav nalog pravite?</h1>
+					<a href="{% url 'school:teacher-account' %}"><h1>Profesor</h1></a>
+					<a href="{% url 'school:student-account' %}"><h1>Učenik</h1></a>
+				</center>
+				</div>
+		</div>
+	</center>
+<br>
+<br>
+<br>
+{% endblock %}

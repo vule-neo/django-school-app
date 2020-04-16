@@ -1,0 +1,71 @@
+{% extends 'school_template/base.html' %}
+{% load static %}
+{% block content %}
+
+    {% include 'school_template/header.html' %}
+
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner text-center">
+                        <div class="breadcrumb_iner_item">
+                            <h2>Predmeti</h2>
+                            <p>Početna<span>/</span>Predmeti</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <!--::review_part start::-->
+    <section class="special_cource padding_top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+                    <div class="section_tittle text-center">
+                        <h2>Predmeti</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for subject in subjects %}
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single_special_cource">
+                        <div class="special_cource_text">
+                            <a href="{% url 'school:subject-detail' subject.id %}" class="btn_4">{{subject.title}}</a>
+                            <a href="{% url 'school:subject-detail' subject.id %}">
+                                <h3>{{subject.title}}</h3>
+                            </a>
+                            <div class="author_info">
+                                <div class="author_img">
+                                    <img src="{{subject.teacher_name.picture.url}}">
+                                    <div class="author_info_text">
+                                        <p>Conduct by:</p>
+                                        <h5><a href="#">{{subject.teacher_name.name}}</a></h5>
+                                    </div>
+                                </div>
+                                <div class="author_rating">
+                                    <div class="rating">
+                                        <img src="{% static 'img/icon/star.svg'%}" id="star-1">
+                                        <img src="{% static 'img/icon/star.svg'%}" id="star-2">
+                                        <img src="{% static 'img/icon/star.svg'%}" id="star-3">
+                                        <img src="{% static 'img/icon/star.svg'%}" id="star-4">
+                                        <img src="{% static 'img/icon/star.svg'%}" id="star-5">
+                                    </div>
+                                    <p><span id="rating">Bez ocjene</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

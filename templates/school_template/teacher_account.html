@@ -1,0 +1,37 @@
+{% extends 'school_template/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<br>
+<br>
+<br>
+<br>
+	<div class="row">
+		<div class="container">
+	      <form class="col s12" method="POST">
+	      	{% csrf_token %}
+	        <div class="row">
+	          <div class="input-field col s6">
+	            <input name="code" id="input_text" type="text" data-length="10">
+	            <label for="input_text">Unesite kod</label>
+	            <button class="btn waves-effect waves-light" type="submit" name="action">predaj
+	    			<i class="material-icons right">send</i>
+	  			</button>
+	          </div>
+	        </div>
+	      </form>
+	      </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
